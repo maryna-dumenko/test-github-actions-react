@@ -26,10 +26,14 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./build
+      - name: Pushing
+        run: |
+          git config --global user.name 'ci'
+          git config ---global user.email 'ci-test@gmail.com'
+          git add build/
+          git commit -m 'rebuild [bot]'
+          git push origin master
+
   # Deployment job
   deploy:
     environment:
