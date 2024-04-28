@@ -43,8 +43,6 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
-        uses: github/pages-deploy@v0.7.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages 
-          folder: build 
+          publish_dir: ./build
